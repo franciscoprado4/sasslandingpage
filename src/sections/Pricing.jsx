@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Element } from "react-scroll";
 import { useState } from "react";
+import { plans } from "../constants";
 
 export const Pricing = () => {
   const [monthly, setMontly] = useState(false);
@@ -34,6 +35,34 @@ export const Pricing = () => {
                 )}
               ></div>
             </div>
+            <div className="pricing-bg">
+              <img
+                src="/images/bg-outlines.svg"
+                width={960}
+                height={380}
+                alt="outline"
+                className="relative z-2"
+              />
+              <img
+                src="/images/bg-outlines-fill.png"
+                width={960}
+                height={380}
+                alt="outline"
+                className="absolute inset-0 opacity-5 mix-blend-soft-light"
+              />
+            </div>
+          </div>
+          {/* Pricing section */}
+
+          <div className="scroll-hidde relative z-2 -mt-12 flex items-start max-xl:overflow-auto max-xl:pt-6">
+            {plans.map((plan, index) => (
+              <div
+                key={plan.id}
+                className="pricing-plan_first pricing-plan_last pricing-plan_odd pricing-plan_even relative border-2 p-7 max-xl:min-w-80 max-lg:rounded-3xl xl:w-[calc(33.33%+2px)]"
+              >
+                {plan.title}
+              </div>
+            ))}
           </div>
         </div>
       </Element>
