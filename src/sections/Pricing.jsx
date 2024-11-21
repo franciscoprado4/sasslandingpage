@@ -1,8 +1,8 @@
-import clsx from "clsx";
 import { Element } from "react-scroll";
 import { useState } from "react";
+import clsx from "clsx";
 import CountUp from "react-countup";
-import { plans } from "../constants";
+import { plans } from "../constants/index.jsx";
 import { Button } from "../components/Button.jsx";
 
 export const Pricing = () => {
@@ -12,7 +12,7 @@ export const Pricing = () => {
     <section>
       <Element name="pricing">
         <div className="container">
-          <div className="max-w-960 border-2 pricing-head_before relative mx-auto border-l border-r border-s2 bg-s1/50 pb-40 pt-28 max-xl:max-w-4xl ">
+          <div className="max-w-960 pricing-head_before relative mx-auto border-l border-r border-s2 bg-s1/50 pb-40 pt-28 max-xl:max-w-4xl max-lg:border-none max-md:pb-32 max-md:pt-16">
             <h3 className="h3 max-lg:h4 max-md:h5 z-3 relative mx-auto mb-14 max-w-lg text-center text-p4 max-md:mb-11 max-sm:max-w-sm">
               Flexible pricing for teams of all sizes
             </h3>
@@ -30,13 +30,15 @@ export const Pricing = () => {
               >
                 Annual
               </button>
+
               <div
                 className={clsx(
                   "g4 rounded-14 before:h-100 pricing-head_btn_before absolute left-2 top-2 h-[calc(100%-16px)] w-[calc(50%-8px)] overflow-hidden shadow-400 transition-transform duration-500",
                   !monthly && "translate-x-full"
                 )}
-              ></div>
+              />
             </div>
+
             <div className="pricing-bg">
               <img
                 src="/images/bg-outlines.svg"
@@ -54,9 +56,9 @@ export const Pricing = () => {
               />
             </div>
           </div>
-          {/* Pricing section */}
 
-          <div className="scroll-hide relative z-2 -mt-12 flex items-start max-xl:overflow-auto max-xl:pt-6">
+          {/*  pricing section*/}
+          <div className="scroll-hide relative z-2 -mt-12 flex items-start max-xl:gap-5 max-xl:overflow-auto max-xl:pt-6">
             {plans.map((plan, index) => (
               <div
                 key={plan.id}
@@ -69,7 +71,7 @@ export const Pricing = () => {
                 <div
                   className={clsx(
                     "absolute left-0 right-0 z-2 flex items-center justify-center",
-                    index === 1 ? "-top-6" : "-top-6 xl-top-11"
+                    index === 1 ? "-top-6" : "-top-6 xl:-top-11"
                   )}
                 >
                   <img
@@ -104,7 +106,7 @@ export const Pricing = () => {
                         index === 1 ? "text-p3" : "text-p4"
                       )}
                     >
-                      $
+                      ${" "}
                       <CountUp
                         start={plan.priceMonthly}
                         end={monthly ? plan.priceMonthly : plan.priceYearly}
@@ -114,7 +116,7 @@ export const Pricing = () => {
                       />
                     </div>
                     <div className="small-1 relative top-3 ml-1 uppercase">
-                      /mo
+                      / mo
                     </div>
                   </div>
                 </div>
